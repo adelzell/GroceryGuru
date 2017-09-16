@@ -4,6 +4,7 @@
 //
 //  Created by Amelia Delzell on 4/16/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Code edited from Apple's Start Developing Apps Sample Project: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
 //
 
 import UIKit
@@ -29,38 +30,30 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //retrieve all data from the database
+        
         let databaseRetrieval = DatabaseRetrieval()
         databaseRetrieval.delegate1 = self
-        print(databaseRetrieval.delegate1)
         databaseRetrieval.downloadItems()
         
         totalPrice.text = "   Total Cost:"
         
-        
-        
-        // Load any saved items, otherwise load sample data.
+        // Load any saved items
         if let savedItems = loadItems() {
             items += savedItems
             setPrice()
-            //isOutofStock(index: 0)
         }
-//        else {
-//            // Load the sample data.
-//            loadSampleItems()
-//        }
-        
-        
-//                NotificationCenter.default.addObserver(self, selector: #selector(ItemTableViewController.saveItems), name: NSNotification.Name(rawValue: "ProductNotification"), object: nil)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // check to see if any items are running low or are out of stock
         if (!didCheckOutofStock){
         isOutofStock(index: 0)
         didCheckOutofStock = true
         }
     }
     
+    // goes through the items saved on the gorcery list and alerts uset if the stock is running low
     func isOutofStock(index: Int) {
         if items.count > 0 {
             let stock = DataService.getStock(name: items[index].name!)
@@ -90,6 +83,7 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
         }
     }
     
+    // sums the price of all items on Grocery List
     func setPrice() {
         price = 0.00
         if items.count > 0{
@@ -102,7 +96,7 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
         totalPrice.text = "  Total Cost: $" + String(price)
     }
     
-    
+    //reloads the data from the database to check and see if the stock of any items has been updated
     func reload(){
         let databaseRetrieval = DatabaseRetrieval()
         databaseRetrieval.delegate1 = self
@@ -112,7 +106,6 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func itemsDownloaded(items: NSArray) {
@@ -173,31 +166,13 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
             saveItems()
             //Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } //else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        //}
+        }
     }
     
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     
     //MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -224,20 +199,18 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
                 // Fallback on earlier versions
             }
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
     
     //MARK: Actions
-    
+    //adds a new item to the grocery list
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? SetStockViewController, let item = sourceViewController.item {
                 // Add a new item.
                 let newIndexPath = IndexPath(row: items.count, section: 0)
-                
-                //items += [item!]
+            
                 items.append(item)
-                //^instead of this line, they said: meals.append(meal)
                 
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
 
@@ -246,8 +219,8 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
             setPrice()
             saveItems()
             
-            print(Int(item.stock!)!)
             
+            //let's the user know if the item they are adding to their cart is out of stock
             let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
             if (Int(item.stock!) == -1){
@@ -261,7 +234,7 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
             }
         }
     }
-    
+    // archives items so that if the app is closed an reopened, the items on the grocery list can be reloaded
         private func saveItems() {
             let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ArchiveURL.path)
             if isSuccessfulSave {
@@ -278,7 +251,7 @@ class ItemTableViewController: UITableViewController, DataServiceProtocol {
                 }
             }
         }
-    
+    // loads save items from the archives
     private func loadItems() -> [Item]?  {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Item.ArchiveURL.path) as? [Item]
     }

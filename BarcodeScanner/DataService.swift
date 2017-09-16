@@ -4,6 +4,7 @@
 //
 //  Created by Amelia Delzell on 3/26/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Code edited from Matthew Maher's online tutorial: https://www.appcoda.com/simple-barcode-reader-app-swift/
 //
 
 import Foundation
@@ -30,7 +31,7 @@ class DataService {
         self.database = items
     }
     
-    
+    // searches the database for a matching UPC (sent from Barcode Scanner) and creates a barcode to be displayed in the grocery cart based on the UPC number even if the UPC number is not foung in the database
     static func searchAPI(codeNumber: String){
         foundUPC = false
         if database.count != 0 {
@@ -52,10 +53,6 @@ class DataService {
             }
            
         }
-//
-//        self.dataService.NAME_OF_FOOD = "hello"
-//        self.dataService.PRICE_OF_FOOD = "$2.00"
-//        self.dataService.STOCK_OF_FOOD = 0
         
         let data = codeNumber.data(using: String.Encoding.ascii)
         
@@ -68,23 +65,11 @@ class DataService {
                 
             }
             
-            //}
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProductNotification"), object: nil)
-        //
-        //    static func generateBarcode(string: String){
-        //        let data = string.data(using: String.Encoding.ascii)
-        //
-        //        if let filter = CIFilter(name: "CICode128BarcodeGenerator") {
-        //            filter.setValue(data, forKey: "inputMessage")
-        //            let transform = CGAffineTransform(scaleX: 3, y: 3)
-        //
-        //            if let output = filter.outputImage?.applying(transform) {
-        //                self.dataService.IMAGE = UIImage(ciImage: output)
-        //
-        //        }
         
     }
+    
     
     static func searchAPI(name: String){
         var codeNumber = " "
@@ -111,12 +96,11 @@ class DataService {
                 
             }
             
-            //}
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProductNotification"), object: nil)
         
     }
-    
+    //searches the database for the name of an item and returns the stock of that item
     static func getStock(name: String) -> String {
         var thisStock = " "
         if database.count != 0{

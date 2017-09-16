@@ -4,6 +4,7 @@
 //
 //  Created by Amelia Delzell on 4/16/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Used techniques from Gabriel Theodoropoulos' tutorial "How To Create a Custom Search Bar Using UISearchController": https://www.appcoda.com/custom-search-bar-tutorial/
 //
 
 import Foundation
@@ -72,7 +73,7 @@ class ManualSearchViewController: UIViewController, UITableViewDelegate, UITable
     func updateSearchResults(for searchController: UISearchController) {
         let searchString = searchController.searchBar.text
         
-        // Filter the data array and get only those countries that match the search text.
+        // Filter the data array and get only those items that match the search text.
         let a = ManualSearchViewController.itemsArray.count
         var unfilteredArray = Array(repeating: " ", count: a)
         for i in 0 ..< a{
@@ -93,6 +94,8 @@ class ManualSearchViewController: UIViewController, UITableViewDelegate, UITable
        return 1
     }
     
+    
+    //creates a table with only the amount of rows as match the search criteria
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowResults {
@@ -135,14 +138,11 @@ class ManualSearchViewController: UIViewController, UITableViewDelegate, UITable
         if shouldShowResults {
             selectedItem = filteredArray[indexPath.row]
             DataService.searchAPI(name: selectedItem)
-          // self.performSegue(withIdentifier: "display", sender: self)
         }
         
         else {
             selectedItem = (ManualSearchViewController.itemsArray[indexPath.row] as! Item).name!
             DataService.searchAPI(name: selectedItem)
-             //self.navigationController?.popViewController(animated: true)
-           //self.performSegue(withIdentifier: "display", sender: self)
         }
         
     }

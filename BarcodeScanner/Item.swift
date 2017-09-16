@@ -4,7 +4,9 @@
 //
 //  Created by Amelia Delzell on 3/26/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Code adapted from Apple's Start Developing Apps Sample Project: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
 //
+
 
 import Foundation
 import UIKit
@@ -49,6 +51,7 @@ class Item: NSObject, NSCoding {
     }
 
     
+    //encodes the element of an item to be archived and saved
     
         func encode(with aCoder: NSCoder) {
             aCoder.encode(name, forKey: PropertyKey.name)
@@ -57,6 +60,8 @@ class Item: NSObject, NSCoding {
             aCoder.encode(stock, forKey: PropertyKey.stock)
             aCoder.encode(UPC, forKey: PropertyKey.UPC)
         }
+    
+    //decodes the element of an item to load the items if the application is closed and reopened
     
         required convenience init?(coder aDecoder: NSCoder) {
     
@@ -81,8 +86,6 @@ class Item: NSObject, NSCoding {
                 //}
             }
             
-    
-            // Because photo is an optional property of Meal, just use conditional cast.
     
             // Must call designated initializer.
             self.init(name: name!, photo: photo!, price: price!, stock: stock!, UPC: UPC!)

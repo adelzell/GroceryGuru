@@ -3,7 +3,8 @@
 //  BarcodeScanner
 //
 //  Created by Amelia Delzell on 3/26/17.
-//  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Code adapted from Matthew Maher's online tutorial: https://www.appcoda.com/simple-barcode-reader-app-swift/
+//
 //
 
 import UIKit

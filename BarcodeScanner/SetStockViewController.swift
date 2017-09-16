@@ -4,6 +4,9 @@
 //
 //  Created by Amelia Delzell on 4/18/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Adapted from Apple's Start Developing Apps Sample Project: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
+//  Adapted from Belal Khan's Swift PHP MySQL Tutorial – Connecting iOS App to MySQL Database: https://www.simplifiedios.net/swift-php-mysql-tutorial/
+
 //
 
 import UIKit
@@ -29,8 +32,8 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
         
         self.stock.text = "How many in stock?"
         
-        let when = DispatchTime.now() + 0.05 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
+        let when = DispatchTime.now() + 0.05 // delays for a period of time to allow the program to search for the desired item
+            DispatchQueue.main.asyncAfter(deadline: when) {
             if (DataService.dataService.NAME_OF_FOOD != " "){
                 self.nameLabel.text = "Add " + DataService.dataService.NAME_OF_FOOD + " to your cart?"
             }
@@ -42,6 +45,8 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
     updateSaveButtonState()
     
     }
+    
+    //saves the item to the gorcery list and updates the stock in the cloud database
     
    @IBAction func save(_ sender: UIButton) {
         let requestURL = URL(string: URL_UPDATE_STOCK)
@@ -75,7 +80,7 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                //print("error=\(error)")
+    
                 return
             }
             
@@ -85,7 +90,7 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+            print("responseString = \(String(describing: responseString))")
                 self.itemTable.reload()
                 print("reload")
         }
@@ -124,14 +129,9 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
         guard let button = sender as? UIButton, button === saveButton else {
             if #available(iOS 10.0, *) {
                 os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            } else {
-                // Fallback on earlier versions
             }
             return
         }
-        
-        //^they did that b/c they wanted a meal to be added only when "Save" was pressed
-        //so maybe we need to add something a/b an "Update" button here
         
         let newStock = Int(slider.value) - 1
         let name = DataService.dataService.NAME_OF_FOOD
@@ -141,19 +141,18 @@ class SetStockViewController: UIViewController, UINavigationControllerDelegate  
         let price = DataService.dataService.PRICE_OF_FOOD
         
         
-        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        // Set the item to be passed to ItemTableViewController after the unwind segue.
         item = Item(name: name, photo: photo, price: price, stock: stock, UPC: UPC)
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        let isPresentingInSetStockMode = presentingViewController is UINavigationController
         let owningNavigationController = navigationController
         
-        if isPresentingInAddMealMode || (owningNavigationController != nil) {
-            print("hey")
+        if isPresentingInSetStockMode || (owningNavigationController != nil) {
             dismiss(animated: true, completion: nil)
         }
         else {
-            fatalError("The MealViewController is not inside a navigation controller.")
+            fatalError("The ItemViewController is not inside a navigation controller.")
         }
     }
     

@@ -4,6 +4,7 @@
 //
 //  Created by Amelia Delzell on 4/15/17.
 //  Copyright © 2017 Amelia Delzell. All rights reserved.
+//  Adapted from Chris Ching's tutorial "The Best Way to Connect Your iOS App to My SQL Database https://codewithchris.com/iphone-app-connect-to-mysql-database/ 
 //
 
 import Foundation
@@ -39,6 +40,8 @@ class DatabaseRetrieval: NSObject, URLSessionDataDelegate {
         self.data.append(data);
         
     }
+    
+    //downloads data and turns the database into a JSON file and then into an array of items using the parseJSON function
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?){
         if error != nil{
