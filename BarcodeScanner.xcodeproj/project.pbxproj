@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6415CE61E89F9970051BD13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6415CE41E89F9970051BD13 /* Main.storyboard */; };
+		F637D3DA1F6DCFBD00B3A98F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F637D3D91F6DCFBD00B3A98F /* Main.storyboard */; };
 		F6415CED1E89FECF0051BD13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6415CEC1E89FECF0051BD13 /* Assets.xcassets */; };
 		F65F47D81E88604E009FD241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F47D71E88604E009FD241 /* AppDelegate.swift */; };
 		F65F47DA1E88604E009FD241 /* BarcodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F47D91E88604E009FD241 /* BarcodeReaderViewController.swift */; };
@@ -50,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F6415CE51E89F9970051BD13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/Simple-Barcode-Reader-master/CDBarcodes/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		F637D3D91F6DCFBD00B3A98F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F6415CEC1E89FECF0051BD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/adelzell/Documents/ESE 205/BarcodeScanner2/BarcodeScanner2/Assets.xcassets"; sourceTree = "<absolute>"; };
 		F65F47D41E88604E009FD241 /* GroceryGuru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGuru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F47D71E88604E009FD241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F65F48051E88607F009FD241 /* Controller */,
+				F637D3D91F6DCFBD00B3A98F /* Main.storyboard */,
 			);
 			path = BarcodeScanner;
 			sourceTree = "<group>";
@@ -158,7 +159,6 @@
 				F6C311FD1EA9B76A001AC5A0 /* ManualSearchTableViewCell.swift */,
 				F65F47D71E88604E009FD241 /* AppDelegate.swift */,
 				F6415CEC1E89FECF0051BD13 /* Assets.xcassets */,
-				F6415CE41E89F9970051BD13 /* Main.storyboard */,
 				F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */,
 				F65F47E31E88604E009FD241 /* Info.plist */,
 			);
@@ -277,7 +277,7 @@
 			files = (
 				F65F47E21E88604E009FD241 /* LaunchScreen.storyboard in Resources */,
 				F6415CED1E89FECF0051BD13 /* Assets.xcassets in Resources */,
-				F6415CE61E89F9970051BD13 /* Main.storyboard in Resources */,
+				F637D3DA1F6DCFBD00B3A98F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,14 +355,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F6415CE41E89F9970051BD13 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6415CE51E89F9970051BD13 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
