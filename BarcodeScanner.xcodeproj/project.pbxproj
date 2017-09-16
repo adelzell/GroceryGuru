@@ -50,13 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F637D3D91F6DCFBD00B3A98F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F637D3D91F6DCFBD00B3A98F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = BarcodeScanner/Main.storyboard; sourceTree = "<group>"; };
 		F6415CEC1E89FECF0051BD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/adelzell/Documents/ESE 205/BarcodeScanner2/BarcodeScanner2/Assets.xcassets"; sourceTree = "<absolute>"; };
 		F65F47D41E88604E009FD241 /* GroceryGuru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGuru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F47D71E88604E009FD241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F65F47D91E88604E009FD241 /* BarcodeReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeReaderViewController.swift; sourceTree = "<group>"; };
 		F65F47E11E88604E009FD241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F65F47E31E88604E009FD241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F65F47E31E88604E009FD241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BarcodeScanner/Info.plist; sourceTree = "<group>"; };
 		F65F47E81E88604E009FD241 /* BarcodeScannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarcodeScannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F47EC1E88604E009FD241 /* BarcodeScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerTests.swift; sourceTree = "<group>"; };
 		F65F47EE1E88604E009FD241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				F65F47D61E88604E009FD241 /* BarcodeScanner */,
+				F637D3D91F6DCFBD00B3A98F /* Main.storyboard */,
+				F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */,
+				F6415CEC1E89FECF0051BD13 /* Assets.xcassets */,
+				F65F47E31E88604E009FD241 /* Info.plist */,
 				F65F47EB1E88604E009FD241 /* BarcodeScannerTests */,
 				F65F47F61E88604E009FD241 /* BarcodeScannerUITests */,
 				F65F47D51E88604E009FD241 /* Products */,
@@ -122,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				F65F48051E88607F009FD241 /* Controller */,
-				F637D3D91F6DCFBD00B3A98F /* Main.storyboard */,
 			);
 			path = BarcodeScanner;
 			sourceTree = "<group>";
@@ -158,9 +161,6 @@
 				F679FD251EA6FEA200038E03 /* SetStockViewController.swift */,
 				F6C311FD1EA9B76A001AC5A0 /* ManualSearchTableViewCell.swift */,
 				F65F47D71E88604E009FD241 /* AppDelegate.swift */,
-				F6415CEC1E89FECF0051BD13 /* Assets.xcassets */,
-				F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */,
-				F65F47E31E88604E009FD241 /* Info.plist */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -361,6 +361,7 @@
 				F65F47E11E88604E009FD241 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = BarcodeScanner;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
