@@ -51,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		F6415CE51E89F9970051BD13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/Simple-Barcode-Reader-master/CDBarcodes/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		F6415CEC1E89FECF0051BD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../BarcodeScanner2/BarcodeScanner2/Assets.xcassets; sourceTree = "<group>"; };
+		F6415CEC1E89FECF0051BD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/adelzell/Documents/ESE 205/BarcodeScanner2/BarcodeScanner2/Assets.xcassets"; sourceTree = "<absolute>"; };
 		F65F47D41E88604E009FD241 /* GroceryGuru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGuru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F47D71E88604E009FD241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F65F47D91E88604E009FD241 /* BarcodeReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeReaderViewController.swift; sourceTree = "<group>"; };
@@ -122,11 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				F65F48051E88607F009FD241 /* Controller */,
-				F65F47D71E88604E009FD241 /* AppDelegate.swift */,
-				F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */,
-				F6415CEC1E89FECF0051BD13 /* Assets.xcassets */,
-				F6415CE41E89F9970051BD13 /* Main.storyboard */,
-				F65F47E31E88604E009FD241 /* Info.plist */,
 			);
 			path = BarcodeScanner;
 			sourceTree = "<group>";
@@ -161,6 +156,11 @@
 				F6BCFAD41EA6F3A900E66F7B /* ItemTableViewCell.swift */,
 				F679FD251EA6FEA200038E03 /* SetStockViewController.swift */,
 				F6C311FD1EA9B76A001AC5A0 /* ManualSearchTableViewCell.swift */,
+				F65F47D71E88604E009FD241 /* AppDelegate.swift */,
+				F6415CEC1E89FECF0051BD13 /* Assets.xcassets */,
+				F6415CE41E89F9970051BD13 /* Main.storyboard */,
+				F65F47E01E88604E009FD241 /* LaunchScreen.storyboard */,
+				F65F47E31E88604E009FD241 /* Info.plist */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
